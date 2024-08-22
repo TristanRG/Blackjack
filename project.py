@@ -186,15 +186,13 @@ def game_starts(bet, deposit):
                 continue
             else:
                 bet *= 2
-                deposit -= bet
                 player.add_card(deck.deal_card())
                 player_points = player.calculate_total()
                 player.show_hand()
                 print(f"You currently have {player_points} points")
                 if player_points > 21:
                     print("You went over 21. You lose.")
-                    deposit -= bet
-                    return deposit
+                    return deposit - bet
                 break
 
         elif choice == 2:
@@ -244,25 +242,23 @@ def game_starts(bet, deposit):
         print(f"The dealer currently has {dealer_points} points")
 
     #Use the game_results function to determine the result and update the deposit
-    deposit - bet
     deposit = game_results(player_points, dealer_points, deposit, bet)
     return deposit
 
 #Gives the outcome of the game and returns the winnings/losses based on it
 def game_results(player_points, dealer_points, deposit, bet):
 
-    winnings = bet * 2
     if dealer_points > 21:
-        print(f"Dealer went over 21. You win {winnings}$")
-        deposit += winnings
+        print(f"Dealer went over 21. You win {bet}$")
+        deposit += bet
 
     elif dealer_points > player_points:
         print(f"Dealer has {dealer_points} and you have {player_points}. You lost {bet}")
         deposit -= bet
 
     elif player_points > dealer_points:
-        print(f"Your score {player_points} is higher than the dealer's points {dealer_points}. You win {winnings}$")
-        deposit += winnings
+        print(f"Your score {player_points} is higher than the dealer's points {dealer_points}. You win {bet}$")
+        deposit += bet
 
     else:
         print(f"It's a tie. You're getting your {bet} back")

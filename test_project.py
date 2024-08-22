@@ -34,10 +34,10 @@ def test_first_card_value():
 
 #Tests the game_results() function, which tells the the outcome of the game based on the point values
 def test_game_results():
-    assert game_results(20, 18, 1000, 100) == 1200  # Player wins
+    assert game_results(20, 18, 1000, 100) == 1100  # Player wins
     assert game_results(18, 20, 1000, 100) == 900   # Dealer wins
     assert game_results(20, 20, 1000, 100) == 1000  # Tie
-    assert game_results(20, 22, 1000, 100) == 1200  # Dealer busts
+    assert game_results(20, 22, 1000, 100) == 1100  # Dealer busts
 
 #Tests whether the user has enough funds to continue
 def test_check_funds():
